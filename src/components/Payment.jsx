@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 
+//test test
+
 const Payment = ({ cart, setCart, setStep }) => {
   // Initialize state to store card number, expiry, and CVC
   const [paymentInfo, setPaymentInfo] = useState({
     cardNumber: '',
     expiryDate: '',
-    cvc: ''
+    cvc: '',
   });
 
   // Handle input change for form fields
@@ -31,9 +33,7 @@ const Payment = ({ cart, setCart, setStep }) => {
       {/* Order Review Section */}
       <div>
         <h3 className="text-xl font-semibold">Your Order:</h3>
-        <ul>
-          {/* Map the cart items */}
-        </ul>
+        <ul>{/* Map the cart items */}</ul>
       </div>
 
       {/* Payment Form Inputs */}
@@ -50,7 +50,7 @@ const Payment = ({ cart, setCart, setStep }) => {
 
       {/* Submit Payment Button */}
       <button
-        onClick={() => setStep("summary")}
+        onClick={() => setStep('summary')}
         className="bg-green-500 text-white py-2 px-6 rounded"
       >
         Submit Payment
