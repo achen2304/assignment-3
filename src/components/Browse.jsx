@@ -11,7 +11,7 @@ const Browse = ({ cart, setCart, setStep }) => {
           <div key={item.offering_id} >
             
           <img className="img-fluid" src={item.image} width={350} /> <br/>
-          <h1 className="flex item-center text-xl"> {item.title}</h1>
+          <h1 className="flex justify-center item-center text-xl "> {item.title}</h1>
           {item.category} <br/>
           {item.price} <br/>
           </div>
@@ -20,7 +20,7 @@ const Browse = ({ cart, setCart, setStep }) => {
   return (
     <div>
       {/* Add appropriate Tailwind styling 👇 */}
-      <h2 className='flex justify-center font-bold'>Browse Courses</h2> 
+      <h2 className='flex justify-center font-bold '>Browse Courses</h2> 
       <div className='grid grid-cols-3 gap-{4}'>
       {listItems }
       </div>
