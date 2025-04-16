@@ -1,35 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-const testcart = [
-  {
-    offering_id: 1,
-    title: 'Cloud Computing',
-    instructor: 'Jaime Cremin',
-    price: '24.56',
-    image:
-      'https://media.istockphoto.com/id/1669453534/photo/3d-render-cloud-computing-circuit-board-background.jpg?s=612x612&w=0&k=20&c=hpJ-qm6jT-Ip-1grdsbw6Xkr_fWz36UV_JnMB68geJc=',
-    rating: 4.2,
-    id: 'COMS459',
-    description:
-      'Explore the fundamentals of cloud infrastructure, services, and deployment models, including AWS, Azure, and Google Cloud.',
-  },
-  {
-    offering_id: 1,
-    title: 'Cloud Computing',
-    instructor: 'Jaime Cremin',
-    price: '24.56',
-    image:
-      'https://media.istockphoto.com/id/1669453534/photo/3d-render-cloud-computing-circuit-board-background.jpg?s=612x612&w=0&k=20&c=hpJ-qm6jT-Ip-1grdsbw6Xkr_fWz36UV_JnMB68geJc=',
-    rating: 4.2,
-    id: 'COMS459',
-    description:
-      'Explore the fundamentals of cloud infrastructure, services, and deployment models, including AWS, Azure, and Google Cloud.',
-  },
-];
-
-const Cart = ({ setStep }) => {
-  const [cart, setCart] = useState(testcart);
-
+const Cart = ({ cart, setCart, setStep }) => {
   const removeFromCart = (index) => {
     const newCart = [...cart];
     newCart.splice(index, 1);
@@ -43,9 +14,9 @@ const Cart = ({ setStep }) => {
   };
 
   return (
-    <div className="min-h-screen p-8">
-      <div className="max-w-4xl mx-auto bg-secondary rounded-lg p-4 mt-20">
-        <h2 className="text-center text-3xl font-bold">Your Cart</h2>
+    <div className="p-8">
+      <div className="max-w-4xl mx-auto bg-secondary rounded-lg p-6 mt-20">
+        <h2 className="text-center text-3xl font-bold p-2">Your Cart</h2>
         <hr className="m-4" />
         {cart.length === 0 ? (
           <div className="text-center py-12">
@@ -61,11 +32,8 @@ const Cart = ({ setStep }) => {
           <>
             <div>
               {cart.map((item, index) => (
-                <>
-                  <div
-                    key={index}
-                    className="flex items-center gap-6 p-4 bg-secondary rounded-lg"
-                  >
+                <div key={`${item.offering_id}-${index}`}>
+                  <div className="flex items-center bg-primary/20 gap-6 p-4 rounded-lg mb-4">
                     <img
                       src={item.image}
                       alt={item.title}
@@ -88,15 +56,14 @@ const Cart = ({ setStep }) => {
                       </button>
                     </div>
                   </div>
-                  <hr className="m-0 border-primary" />
-                </>
+                </div>
               ))}
             </div>
 
-            <div className="mt-8 p-6 bg-secondary rounded-lg">
-              <div className="flex justify-end mb-4 gap-1">
-                <span className="text-xl">Total:</span>
-                <span className="text-xl font-bold">${calculateTotal()}</span>
+            <div className="p-6 bg-secondary rounded-lg ">
+              <div className="flex justify-end mb-4 gap-2">
+                <span className="text-2xl mb-4">Total:</span>
+                <span className="text-2xl font-bold">${calculateTotal()}</span>
               </div>
               <div className="flex gap-4">
                 <button
