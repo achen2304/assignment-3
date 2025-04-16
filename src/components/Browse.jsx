@@ -1,5 +1,5 @@
 import React from 'react';
-import {Courses} from '../data/Courses'
+import { Courses } from '../data/Courses';
 
 const Browse = ({ cart, setCart, setStep }) => {
   // TODO:
@@ -10,10 +10,10 @@ const Browse = ({ cart, setCart, setStep }) => {
   return (
     <div>
       {/* Add appropriate Tailwind styling 👇 */}
-      <h2>Browse Courses</h2> 
-      {/* Search input (Extra Credit)*/} 
+      <h2>Browse Courses</h2>
+      {/* Search input (Extra Credit)*/}
       {/* Course list with Add to Cart button */}
-      <button onClick={() => setStep("cart")}>Go to Cart</button>
+      <button onClick={() => setStep('cart')}>Go to Cart</button>
     </div>
   );
 };
