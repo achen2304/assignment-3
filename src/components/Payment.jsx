@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Footer from './footer';
+import Footer from './Footer';
 
 const Payment = ({ cart, setCart, setStep }) => {
   const [paymentInfo, setPaymentInfo] = useState({
