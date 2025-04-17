@@ -83,7 +83,7 @@ const Payment = ({ cart, setCart, setStep }) => {
 
           <form onSubmit={handleSubmit} className="space-y-6">
             <div>
-              <label className="block mb-2">Cardholder Name</label>
+              <label className="block mb-2">Name on Card</label>
               <input
                 type="text"
                 name="name"
