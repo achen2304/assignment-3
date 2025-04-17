@@ -3,7 +3,7 @@ import BrowseCourses from './components/Browse';
 import Cart from './components/Cart';
 import Payment from './components/Payment';
 import Summary from './components/Summary';
-import Footer from './components/footer';
+import Footer from './components/Footer';
 
 const testcart = [
   {
