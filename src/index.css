@@ -1,1 +1,20 @@
-@import "tailwindcss"
+@import 'tailwindcss';
+
+@theme {
+  --color-bg1: #121420;
+  --color-bg2: #1b2432;
+  --color-text: #d1d0e6;
+  --color-primary: #403f4c;
+  --color-secondary: #2c2b3c;
+  --color-warning: #d0342c;
+  --color-success: #008000;
+}
+
+:root {
+  background-color: var(--color-bg1);
+  color: var(--color-text);
+}
+
+button:hover {
+  cursor: pointer;
+}
