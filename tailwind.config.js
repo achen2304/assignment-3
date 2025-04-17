@@ -1,10 +1,9 @@
 export default {
-    content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
-    theme: {
-      extend: {
-        scrollBehavior: ["smooth"],
-      },
+  content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
+  theme: {
+    extend: {
+      scrollBehavior: ['smooth'],
     },
-    plugins: [],
-  };
-  
+  },
+  plugins: [],
+};

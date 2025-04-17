@@ -19,17 +19,11 @@ const Browse = ({ cart, setCart, setStep }) => {
   return (
     <div>
       {/* Add appropriate Tailwind styling 👇 */}
-<<<<<<< HEAD
       <h2 className='flex-wrap justify-center font-bold'>Browse Courses</h2> 
       <div className='grid grid-cols-3 gap-{4px}'>
         {listItems }
       </div>
-      {/* Search input (Extra Credit)*/} 
-=======
-      <h2>Browse Courses</h2>
-      {/* Search input (Extra Credit)*/}
->>>>>>> b6e80f9fae3ce914974716d1ad046a07a2a1dc65
-      {/* Course list with Add to Cart button */}
+      {/* Search input (Extr Credit)*/} 
       <button onClick={() => setStep('cart')}>Go to Cart</button>
     </div>
   );
