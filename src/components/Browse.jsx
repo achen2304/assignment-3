@@ -13,8 +13,10 @@ const Browse = ({ cart, setCart, setStep }) => {
           <img className="flex object-center w-90 h-50 object-cover rounded-lg" src={item.image} /> <br/>
           <h1 className="flex justify-center text-l  font-extrabold "> {item.title}</h1>
           <h2 className="flex justify-right "> Instructor: {item.instructor} </h2>
-
-
+          <p className="flex justify-right "> Price: {item.price} </p>
+          <p className="flex justify-right "> Rating: {item.rating} </p>
+          <p className="flex justify-right ">{item.description} </p>
+          <p className="flex justify-right "> ID: {item.id} </p>
 
 
           <button type="button" variant="light" 
