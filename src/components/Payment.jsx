@@ -1,19 +1,12 @@
 import React, { useState } from 'react';
 import Footer from './Footer';
 
-const Payment = ({ cart, setCart, setStep }) => {
-  const [paymentInfo, setPaymentInfo] = useState({
-    cardNumber: '',
-    expiryDate: '',
-    cvc: '',
-    name: '',
-  });
-
+const Payment = ({ cart, setCart, setStep, userInfo, setUserInfo }) => {
   const [errors, setErrors] = useState({});
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setPaymentInfo((prev) => ({
+    setUserInfo((prev) => ({
       ...prev,
       [name]: value,
     }));
@@ -22,20 +15,24 @@ const Payment = ({ cart, setCart, setStep }) => {
   const validateForm = () => {
     const newErrors = {};
 
-    if (!paymentInfo.cardNumber.replace(/\s/g, '').match(/^\d{16}$/)) {
+    if (!userInfo.cardNumber.replace(/\s/g, '').match(/^\d{16}$/)) {
       newErrors.cardNumber = 'Please enter a valid 16-digit card number';
     }
 
-    if (!paymentInfo.expiryDate.match(/^(0[1-9]|1[0-2])\/([0-9]{2})$/)) {
+    if (!userInfo.expiryDate.match(/^(0[1-9]|1[0-2])\/([0-9]{2})$/)) {
       newErrors.expiryDate = 'Please enter a valid expiry date (MM/YY)';
     }
 
-    if (!paymentInfo.cvc.match(/^\d{3}$/)) {
+    if (!userInfo.cvc.match(/^\d{3}$/)) {
       newErrors.cvc = 'Please enter a valid CVC';
     }
 
-    if (!paymentInfo.name.trim()) {
+    if (!userInfo.name.trim()) {
       newErrors.name = 'Please enter cardholder name';
+    }
+
+    if (!userInfo.email.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) {
+      newErrors.email = 'Please enter a valid email address';
     }
 
     setErrors(newErrors);
@@ -83,11 +80,27 @@ const Payment = ({ cart, setCart, setStep }) => {
 
           <form onSubmit={handleSubmit} className="space-y-6">
             <div>
+              <label className="block mb-2">Email</label>
+              <input
+                type="text"
+                name="email"
+                value={userInfo.email}
+                onChange={handleChange}
+                className={`w-full p-3 rounded-lg bg-primary/20 border ${
+                  errors.email ? 'border-warning' : 'border-primary'
+                }`}
+                placeholder="example@email.com"
+              />
+              {errors.email && (
+                <p className="text-warning mt-1">{errors.email}</p>
+              )}
+            </div>
+            <div>
               <label className="block mb-2">Name on Card</label>
               <input
                 type="text"
                 name="name"
-                value={paymentInfo.name}
+                value={userInfo.name}
                 onChange={handleChange}
                 className={`w-full p-3 rounded-lg bg-primary/20 border ${
                   errors.name ? 'border-warning' : 'border-primary'
@@ -104,7 +117,7 @@ const Payment = ({ cart, setCart, setStep }) => {
               <input
                 type="text"
                 name="cardNumber"
-                value={paymentInfo.cardNumber}
+                value={userInfo.cardNumber}
                 onChange={handleChange}
                 className={`w-full p-3 rounded-lg bg-primary/20 border ${
                   errors.cardNumber ? 'border-warning' : 'border-primary'
@@ -123,7 +136,7 @@ const Payment = ({ cart, setCart, setStep }) => {
                 <input
                   type="text"
                   name="expiryDate"
-                  value={paymentInfo.expiryDate}
+                  value={userInfo.expiryDate}
                   onChange={handleChange}
                   className={`w-full p-3 rounded-lg bg-primary/20 border ${
                     errors.expiryDate ? 'border-warning' : 'border-primary'
@@ -141,7 +154,7 @@ const Payment = ({ cart, setCart, setStep }) => {
                 <input
                   type="text"
                   name="cvc"
-                  value={paymentInfo.cvc}
+                  value={userInfo.cvc}
                   onChange={handleChange}
                   className={`w-full p-3 rounded-lg bg-primary/20 border ${
                     errors.cvc ? 'border-warning' : 'border-primary'
